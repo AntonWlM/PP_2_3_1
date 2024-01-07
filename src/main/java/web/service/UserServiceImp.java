@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web.model.User;
-import web.userDAO.UserDAOImp;
+import web.userDAO.UserDAO;
 
 import java.util.List;
 
@@ -12,32 +12,32 @@ import java.util.List;
 @Transactional(readOnly = true)
 public class UserServiceImp implements UserService {
 
-    private final UserDAOImp userDAOImp;
+    private final UserDAO userDAO;
 
     @Autowired
-    public UserServiceImp(UserDAOImp userDAOImp) {
-        this.userDAOImp = userDAOImp;
+    public UserServiceImp(UserDAO userDAO) {
+        this.userDAO = userDAO;
     }
 
     public List<User> list() {
-        return userDAOImp.list();
+        return userDAO.list();
     }
 
     public User user(int id) {
-        return userDAOImp.user(id);
+        return userDAO.user(id);
     }
 
     @Transactional
     public void save(User user) {
-        userDAOImp.save(user);
+        userDAO.save(user);
     }
     @Transactional
     public void update(User user, int id) {
-        userDAOImp.update(user, id);
+        userDAO.update(user, id);
     }
 
     @Transactional
     public void delete(int id) {
-        userDAOImp.delete(id);
+        userDAO.delete(id);
     }
 }
