@@ -34,9 +34,10 @@ public class UserDAOImp implements UserDAO {
         entityManager.flush();}
     }
 
-    public void update(User user,int id) {
-        entityManager.merge(user);
-        entityManager.flush();
+    public void update(User user) {
+        if (!user.getName().isBlank() && !user.getLastName().isBlank()) {
+            entityManager.merge(user);
+            entityManager.flush();}
     }
 
     public void delete(int id) throws NullPointerException {
