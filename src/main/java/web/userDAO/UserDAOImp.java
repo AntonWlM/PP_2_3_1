@@ -29,8 +29,9 @@ public class UserDAOImp implements UserDAO {
     }
 
     public void save(User user) {
+        if (!user.getName().isBlank() && !user.getLastName().isBlank()) {
         entityManager.persist(user);
-        entityManager.flush();
+        entityManager.flush();}
     }
 
     public void update(User user,int id) {
