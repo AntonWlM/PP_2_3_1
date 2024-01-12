@@ -21,7 +21,7 @@ import java.util.Properties;
 @ComponentScan("web")
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement
-@EnableJpaRepositories("web.userDAO")
+@EnableJpaRepositories("web.repository")
 public class HiberConfig {
 
     private final Environment env;
